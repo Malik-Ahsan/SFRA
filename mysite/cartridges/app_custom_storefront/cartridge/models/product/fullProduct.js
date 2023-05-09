@@ -1,13 +1,11 @@
 'use strict';
 
 var base = module.superModule;
+var decorators = require('*/cartridge/models/product/decorators/index');
 
 module.exports = function fullProduct(product, apiProduct, options){
     base.call(this,product, apiProduct, options);
 
-    Object.defineProperty(product, 'msg',{
-        enumerable: true,
-        value: 'New '
-    });
+    decorators.prefix(product, apiProduct);
     return product;
 }
