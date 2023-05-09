@@ -3,6 +3,9 @@ cartridges/app_storefront_base/cartridge/static/default/css/
 cartridges/app_storefront_base/cartridge/static/default/js/
 cartridges/app_storefront_base/cartridge/static/default/fonts/
 
+mysite/cartridges/app_custom_storefront/cartridge/static/default/css/
+mysite/cartridges/app_custom_storefront/cartridge/static/default/js/
+
 cartridges/app_storefront_base/cartridge/static/fr_FR/css/
 cartridges/app_storefront_base/cartridge/static/fr_FR/js/
 cartridges/app_storefront_base/cartridge/static/fr_FR/fonts/
