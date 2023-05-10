@@ -41,7 +41,7 @@
                     <!-- Product Name -->
                     <div class="row">
                         <div class="col">
-                            <h1 class="product-name hidden-sm-down">${pdict.msg + product.productName}</h1>
+                            <h1 class="product-name hidden-sm-down">${pdict.msg + ' ' +  product.productName}</h1>
                         </div>
                     </div>
 
