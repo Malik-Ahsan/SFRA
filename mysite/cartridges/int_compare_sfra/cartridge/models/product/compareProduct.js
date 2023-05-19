@@ -14,10 +14,6 @@ module.exports = function compareProduct(product, apiProduct, options) { //for o
         category = apiProduct.getMasterProduct().getPrimaryCategory();
     }
 
-    if (category && 'sizeChartID' in category.custom) {
-        decorators.sizeChart(product, category.custom.sizeChartID);
-    }
-
     Object.defineProperty(product, 'cat', {  //a custom property for category
         enumerable: true,
         value: apiProduct.primaryCategory.displayName,
