@@ -1,0 +1,55 @@
+<isdecorate template="common/layout/page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class = "col-2 border">
+                <h2>${Resource.msg('label.productId', 'compare', null)}</h2>
+            </div>
+            <isloop items="${pdict.products}" var="product">
+                <div class = "col-2 border">
+                        <h3>${product.id}</h3>
+                </div>
+            </isloop>
+        </div>
+        <div class="row">
+            <div class = "col-2 border">
+                <h2>${Resource.msg('label.name', 'compare', null)}</h2>
+            </div>
+            <isloop items="${pdict.products}" var="product">
+                <div class = "col-2 border">
+                        <h3>${product.productName}</h3>
+                </div>
+            </isloop>
+        </div>
+        <div class="row">
+            <div class = "col-2 border">
+                <h2>${Resource.msg('label.price', 'compare', null)}</h2>
+            </div>
+            <isloop items="${pdict.products}" var="product">
+                <div class = "col-2 border">
+                        <isset name="price" value="${product.price}" scope="page" />
+                        <h3><isinclude template="product/components/pricing/main" /></h3>
+                </div>
+            </isloop>
+        </div>
+        <div class="row">
+            <div class = "col-2 border">
+                <h2>${Resource.msg('label.category', 'compare', null)}</h2>
+            </div>
+            <isloop items="${pdict.products}" var="product">
+                <div class = "col-2 border">
+                        <h3>${product.cat}</h3>
+                </div>
+            </isloop>
+        </div>
+        <div class="row">
+            <div class = "col-2 border">
+                <h2>${Resource.msg('label.description', 'compare', null)}</h2>
+            </div>
+            <isloop items="${pdict.products}" var="product">
+                <div class = "col-2 border">
+                        <p>${product.shortDescription}</p>
+                </div>
+            </isloop>
+        </div>
+    </div>
+</isdecorate>

@@ -123,6 +123,8 @@ $(document).ready(function() {
     $('.custom-checkbox').on('change',function(){
         buttonEnabledDisabled();
     });
+
+    
     // $('.compare-btn').on('click',function(){
     //     var url = $('.compare-btn').attr('data-url');
     //     var pids = [];
