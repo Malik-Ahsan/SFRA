@@ -19,7 +19,6 @@
                     type="text"
                     class="form-control"
                     id="subscription-form-email"
-                    data-missing-error="${Resource.msg('error.message.required','forms',null)}"
                     data-pattern-mismatch="${Resource.msg('error.message.parse.email.profile.form','forms',null)}"
                     data-range-error="${Resource.msg('error.message.50orless','forms',null)}"
                     aria-describedby="form-email-error"

@@ -1,7 +1,0 @@
-<isdecorate template="common/layout/page">
-    <isif condition="${pdict.success === true}">
-        <h1>${pdict.msg} ${pdict.email}</h1>
-    <iselse/>
-        <h1>${pdict.msg}</h1>
-    </isif>
-</isdecorate>

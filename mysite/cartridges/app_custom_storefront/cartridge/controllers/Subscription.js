@@ -3,7 +3,6 @@
 var server = require('server');
 
 var csrfProtection = require('*/cartridge/scripts/middleware/csrf');
-var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 
 function validateEmail(email) {
     var regex = /^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$/;
@@ -12,7 +11,6 @@ function validateEmail(email) {
 
 server.get(
     'Show',
-    consentTracking.consent,
     server.middleware.https,
     csrfProtection.generateToken,
     function (req, res, next) {
@@ -38,6 +36,7 @@ server.post(
     function (req, res, next) {
         var subscriptionForm = server.forms.getForm('subscription');
         var Resource = require('dw/web/Resource');
+        var URLUtils = require('dw/web/URLUtils');
         var email = subscriptionForm.customer.email.value;
         var isValid,msg;
 
@@ -55,30 +54,35 @@ server.post(
                         });
                     }
                     catch(e){
-                        msg = Resource.msg('error.message.subscription', 'subscription', null);
-                        res.render('/confirmation',{
+                        msg = Resource.msg('error.message.existance', 'subscription', null);
+                        res.json({
                             success: false,
                             msg: msg,
                         });
                     }
                 });
-
+                
                 msg = Resource.msg('success.message.subscription', 'subscription', null);
-                res.render('/confirmation',{
+                res.json({
                     success: true,
-                    email: email,
                     msg: msg,
                 });
             }
             else {
                 msg = Resource.msg('error.message.subscription', 'subscription', null);
-                res.render('/confirmation',{
+                res.json({
                     success: false,
                     msg: msg,
                 });
             }
         }
-
+        else{
+            msg = Resource.msg('error.message.empty', 'subscription', null);
+            res.json({
+                success: false,
+                msg: msg,
+            });
+        }
         next();
     },
 );
