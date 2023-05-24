@@ -1,0 +1,37 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addJs('/js/email.js');
+    </isscript>
+
+    <div class="row justify-content-center equal-height p-4">
+        <form
+            action="${pdict.actionUrl}"
+            class="subscription"
+            method="POST"
+            name="${pdict.subscriptionForm.htmlName}">
+            <div class="form-group
+                <isif condition="${!!pdict.subscriptionForm.customer.email.mandatory === true}">required</isif>">
+                <label class="form-control-label" for="subscription-form-email">
+                    <isprint value="${pdict.subscriptionForm.customer.email.label}" encoding="htmlcontent" />
+                </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="subscription-form-email"
+                    data-missing-error="${Resource.msg('error.message.required','forms',null)}"
+                    data-pattern-mismatch="${Resource.msg('error.message.parse.email.profile.form','forms',null)}"
+                    data-range-error="${Resource.msg('error.message.50orless','forms',null)}"
+                    aria-describedby="form-email-error"
+                    <isprint value=${pdict.subscriptionForm.customer.email.attributes} encoding="off" />>
+                <div class="invalid-feedback" id="form-email-error"></div>
+            </div>
+
+            <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}"/>
+
+            <button type="submit" class="btn btn-block btn-primary">
+                ${Resource.msg('button.email.subscription', 'subscription', null)}
+            </button>
+        </form>
+    </div>
+</isdecorate>
